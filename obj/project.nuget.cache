@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "G9t/ueduIzAua6TEJlaVCh8wwv9Eer9KmePqJxOZi4fmpXBHCN+L7AQfxU4joCiSG1TCdx/WfG+WK1OPMmBIPA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ti2ge\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TerrariaEpicVerision\\TerrariaEpicVerision.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ti2ge\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}

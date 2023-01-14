@@ -1,0 +1,3 @@
+displayName = Terraria if it was epic
+author = DogeDoge17
+version = 0.12.1

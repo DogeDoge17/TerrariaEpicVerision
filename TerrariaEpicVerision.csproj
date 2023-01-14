@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\tModLoader.targets" />
+  <PropertyGroup>
+    <AssemblyName>TerrariaEpicVerision</AssemblyName>
+    <TargetFramework>net6.0</TargetFramework>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Sounds\Music\**" />
+    <EmbeddedResource Remove="Sounds\Music\**" />
+    <None Remove="Sounds\Music\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="NPCs\Critter\RealChiyo.png" />
+    <None Remove="NPCs\Enemy\NecoArc\hit.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NPCs\Critter\RealChiyo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="NPCs\Enemy\NecoArc\hit.mp3" />
+  </ItemGroup>
+</Project>
