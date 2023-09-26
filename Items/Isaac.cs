@@ -20,7 +20,7 @@ namespace TerrariaEpicVerision.Items
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("balls"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("Is this a " + '"' + "The Binding of Isaac" + '"' + " reference??");
+			//Tooltip.SetDefault("Is this a " + '"' + "The Binding of Isaac" + '"' + " reference??");
 		}
 
 		public override void SetDefaults()

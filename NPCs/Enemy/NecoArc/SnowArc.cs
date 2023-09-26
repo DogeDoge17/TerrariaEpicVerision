@@ -22,7 +22,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy.NecoArc
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Snow Neco Arc"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+           // DisplayName.//SetDefault("Snow Neco Arc"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
         }
 
         public override void SetDefaults()
@@ -85,18 +85,17 @@ namespace TerrariaEpicVerision.NPCs.Enemy.NecoArc
             base.OnKill();
         }
 
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
             for (int d = 0; d < 10; d++)
             {
                 //Dust.NewDust(NPC.position, NPC.width, NPC.height, 10, 0f, 0f, 20, Color.Red, 0.5f);
                 Gore.NewGore(null, NPC.Center, new Vector2(), ModContent.GoreType<NecoGore>(), 0.5f);
             }
-
-            base.OnHitByItem(player, item, damage, knockback, crit);
+            base.OnHitByItem(player, item, hit, damageDone);
         }
 
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
         {
             if (Main.expertMode || Main.masterMode)
             {
@@ -110,10 +109,11 @@ namespace TerrariaEpicVerision.NPCs.Enemy.NecoArc
                         break;
                 }
             }
-            base.ModifyHitPlayer(target, ref damage, ref crit);
+            base.ModifyHitPlayer(target, ref modifiers);
         }
 
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+     
+        public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
             for (int d = 0; d < 10; d++)
             {
@@ -121,8 +121,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy.NecoArc
                 Gore.NewGore(null, NPC.Center, new Vector2(), ModContent.GoreType<NecoGore>(), 0.5f);
             }
 
-
-            base.OnHitByProjectile(projectile, damage, knockback, crit);
+            base.OnHitByProjectile(projectile, hit, damageDone);
         }
 
         private float snowTimer = (float)Main.rand.Next(1, 100) / 100;

@@ -9,7 +9,7 @@ namespace TerrariaEpicVerision.Items
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("balls"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("This is an aesthetic modded sword.");
+			//Tooltip.SetDefault("This is an aesthetic modded sword.");
 		}
 
 		public override void SetDefaults()
@@ -31,7 +31,7 @@ namespace TerrariaEpicVerision.Items
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(this.Item.netID, 10);
+			recipe.AddIngredient(ItemID.DirtWall, 10);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}

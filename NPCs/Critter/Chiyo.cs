@@ -1,30 +1,15 @@
-﻿using IL.Terraria.Graphics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using ReLogic.Content.Sources;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.Pipes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
-using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
-using Terraria.IO;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Assets;
 using Terraria.ModLoader.Utilities;
-using Terraria.UI;
 using TerrariaEpicVerision.Gores;
-using TerrariaEpicVerision.UI;
-using UIImage = TerrariaEpicVerision.UI.UIImage;
+
 
 namespace TerrariaEpicVerision.NPCs.Critter
 {
@@ -40,7 +25,7 @@ namespace TerrariaEpicVerision.NPCs.Critter
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chiyo-Chan"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            DisplayName.Format("Chiyo-chan"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
 
             //FileStream filestream = File.OpenRead("TerrariaEpicVerision/NPCs/Critter/RealChiyo.png");
             //realTexture = Texture2D.FromStream(Main.graphics.GraphicsDevice, filestream);
@@ -128,7 +113,7 @@ namespace TerrariaEpicVerision.NPCs.Critter
         }
         */
 
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             for (int d = 0; d < 10; d++)
             {
@@ -136,18 +121,7 @@ namespace TerrariaEpicVerision.NPCs.Critter
                 Gore.NewGore(null, NPC.Center, new Vector2(), ModContent.GoreType<NecoGore>(), 0.5f);
             }
 
-            base.OnHitByItem(player, item, damage, knockback, crit);
-        }
-
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            for (int d = 0; d < 10; d++)
-            {
-                //Dust.NewDust(NPC.position, NPC.width, NPC.height, 10, 0f, 0f, 20, Color.Red, 0.5f);
-                Gore.NewGore(null, NPC.Center, new Vector2(), ModContent.GoreType<NecoGore>(), 0.5f);
-            }
-
-            base.OnHitByProjectile(projectile, damage, knockback, crit);
+            base.HitEffect(hit);
         }
 
 

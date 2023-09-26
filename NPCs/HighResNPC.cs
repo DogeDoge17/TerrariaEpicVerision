@@ -1,30 +1,11 @@
-﻿using IL.Terraria.Graphics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using ReLogic.Content.Sources;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Pipes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent.Bestiary;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.UI.Elements;
-using Terraria.ID;
-using Terraria.IO;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Assets;
-using Terraria.ModLoader.Utilities;
 using Terraria.UI;
-using TerrariaEpicVerision.Gores;
-using TerrariaEpicVerision.UI;
 using UIImage = TerrariaEpicVerision.UI.UIImage;
 
 namespace TerrariaEpicVerision.NPCs

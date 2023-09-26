@@ -166,3 +166,16 @@ C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVer
 C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\obj\Release\net6.0\TerrariaEpicVerision.pdb
 C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\obj\Release\net6.0\ref\TerrariaEpicVerision.dll
 C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\NPCs\Critter\RealChiyo.png
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Backports.dll
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Core.dll
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Iced.dll
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.ILHelpers.dll
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Backports.pdb
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Backports.xml
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Core.pdb
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Core.xml
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Iced.pdb
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Iced.xml
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.ILHelpers.pdb
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.RuntimeDetour.pdb
+C:\Users\ti2ge\Documents\My Games\Terraria\tModLoader\ModSources\TerrariaEpicVerision\bin\Release\net6.0\MonoMod.Utils.pdb

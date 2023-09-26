@@ -34,7 +34,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akihiko Persona 3"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            //DisplayName.SetDefault("Akihiko Persona 3"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Main.npcFrameCount[Type] = 2;
             //largeImage = ModContent.Request<Texture2D>("TerrariaEpicVerision/NPCs/Enemy/Akihiko High Res");
         }
@@ -74,12 +74,11 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             return new SoundStyle(paths[Main.rand.Next(0, paths.Count)]);
         }
 
-
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             checkLife = true;
             hitTarg = target;
-            base.OnHitPlayer(target, damage, crit);
+            base.OnHitPlayer(target, hurtInfo);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -133,7 +132,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
         }
         */
 
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             for (int d = 0; d < 10; d++)
             {
@@ -141,20 +140,27 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                 Gore.NewGore(null, NPC.Center, new Vector2(), ModContent.GoreType<NecoGore>(), 0.5f);
             }
 
-            base.OnHitByItem(player, item, damage, knockback, crit);
+            base.HitEffect(hit);
         }
 
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            for (int d = 0; d < 10; d++)
-            {
-                //Dust.NewDust(NPC.position, NPC.width, NPC.height, 10, 0f, 0f, 20, Color.Red, 0.5f);
-                Gore.NewGore(null, NPC.Center, new Vector2(), ModContent.GoreType<NecoGore>(), 0.5f);
-            }
+
+        //public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        //{
+            
+        //    base.OnHitByItem(player, item, damage, knockback, crit);
+        //}
+
+        //public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        //{
+        //    for (int d = 0; d < 10; d++)
+        //    {
+        //        //Dust.NewDust(NPC.position, NPC.width, NPC.height, 10, 0f, 0f, 20, Color.Red, 0.5f);
+        //        Gore.NewGore(null, NPC.Center, new Vector2(), ModContent.GoreType<NecoGore>(), 0.5f);
+        //    }
 
 
-            base.OnHitByProjectile(projectile, damage, knockback, crit);
-        }
+        //    base.OnHitByProjectile(projectile, damage, knockback, crit);
+        //}
 
         private void PlayHitSound(Player target)
         {

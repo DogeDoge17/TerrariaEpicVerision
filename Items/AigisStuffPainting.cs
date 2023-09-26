@@ -31,8 +31,8 @@ namespace TerrariaEpicVerision.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aigis Persona Three Stuff painting");
-			Tooltip.SetDefault("im stuff");
+			//DisplayName.SetDefault("Aigis Persona Three Stuff painting");
+			//Tooltip.SetDefault("im stuff");
 		}
 
 		public override void SetDefaults()

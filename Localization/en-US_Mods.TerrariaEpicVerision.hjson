@@ -1,0 +1,54 @@
+NPCs: {
+	Chiyo.DisplayName: Chiyo
+	Aigis.DisplayName: Aigis
+	Akihiko.DisplayName: Akihiko
+	BuffcoArc.DisplayName: Buffco Arc
+	JungleArc.DisplayName: Jungle Arc
+	NecoArc.DisplayName: Neco Arc
+	SnowArc.DisplayName: Snow Arc
+	WetArc.DisplayName: Wet Arc
+	Osaka.DisplayName: Osaka
+	Caesar.DisplayName: Caesar
+	PallasAthena.DisplayName: Pallas Athena
+	Ryuji.DisplayName: Ryuji
+}
+
+Items: {
+	AigisStuffPainting: {
+		DisplayName: Aigis Stuff Painting
+		Tooltip: ""
+	}
+
+	balls: {
+		DisplayName: balls
+		Tooltip: ""
+	}
+
+	Isaac: {
+		DisplayName: Isaac
+		Tooltip: ""
+	}
+
+	MakotoStuffPainting: {
+		DisplayName: Makoto Stuff Painting
+		Tooltip: ""
+	}
+
+	RiseStuffPainting: {
+		DisplayName: Rise Stuff Painting
+		Tooltip: ""
+	}
+}
+
+Projectiles.Kamehameha.DisplayName: Kamehameha
+
+Configs: {
+	Config: {
+		DisplayName: Config
+
+		_useLowRes: {
+			Label: Use the orignal low resolution textures
+			Tooltip: ""
+		}
+	}
+}

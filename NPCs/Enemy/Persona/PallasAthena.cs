@@ -32,7 +32,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Athena"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            //DisplayName.SetDefault("Athena"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
         }
 
         public override void SetDefaults()
@@ -87,13 +87,13 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
         }
 
         bool killedSelf;
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
         {
             killedSelf = true;
 
             NPC.life = 0;
 
-             
+
             for (int d = 0; d < 5; d++)
             {
 
@@ -102,10 +102,10 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
                 Gore.NewGore(null, new Vector2(NPC.position.X + (NPC.width / 2), NPC.position.Y + (NPC.height / 2)), new Vector2(), GoreID.Smoke1, 1.5f);
             }
 
-            base.OnHitPlayer(target, damage, crit);
+            base.ModifyHitPlayer(target, ref modifiers);
         }
 
-
+  
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
