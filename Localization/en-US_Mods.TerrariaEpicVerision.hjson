@@ -1,22 +1,23 @@
 NPCs: {
-	Chiyo.DisplayName: Chiyo
-	Aigis.DisplayName: Aigis
-	Akihiko.DisplayName: Akihiko
-	BuffcoArc.DisplayName: Buffco Arc
-	JungleArc.DisplayName: Jungle Arc
+	Chiyo.DisplayName: Chiyo-chan
+	Aigis.DisplayName: Aigis Persona 3
+	Akihiko.DisplayName: Akihiko Persona 3
+	BuffcoArc.DisplayName: Buff Neco Arc
+	JungleArc.DisplayName: Jungle Neco Arc
 	NecoArc.DisplayName: Neco Arc
-	SnowArc.DisplayName: Snow Arc
-	WetArc.DisplayName: Wet Arc
+	SnowArc.DisplayName: Snow Neco Arc
+	WetArc.DisplayName: Wet Neco Arc
 	Osaka.DisplayName: Osaka
 	Caesar.DisplayName: Caesar
-	PallasAthena.DisplayName: Pallas Athena
-	Ryuji.DisplayName: Ryuji
+	PallasAthena.DisplayName: Athena
+	Ryuji.DisplayName: Ryuji Persona 5
+	KenCarson.DisplayName: Ken Carson
 }
 
 Items: {
 	AigisStuffPainting: {
-		DisplayName: Aigis Stuff Painting
-		Tooltip: ""
+		DisplayName: Aigis Persona Three Stuff painting
+		Tooltip: im stuff
 	}
 
 	balls: {
@@ -26,16 +27,21 @@ Items: {
 
 	Isaac: {
 		DisplayName: Isaac
-		Tooltip: ""
+		Tooltip: Is this a "The Binding of Isaac" reference??
 	}
 
 	MakotoStuffPainting: {
-		DisplayName: Makoto Stuff Painting
-		Tooltip: ""
+		DisplayName: Makoto Persona Five Stuff painting
+		Tooltip: im stuff
 	}
 
 	RiseStuffPainting: {
-		DisplayName: Rise Stuff Painting
+		DisplayName: Rise Persona Four Stuff painting
+		Tooltip: im stuff
+	}
+
+	GunBarrel: {
+		DisplayName: Gun Barrel
 		Tooltip: ""
 	}
 }
@@ -48,7 +54,10 @@ Configs: {
 
 		_useLowRes: {
 			Label: Use the orignal low resolution textures
-			Tooltip: ""
+			Tooltip: This will disable the high resolution textures present in this mod and opt for the lower res version
 		}
 	}
 }
+
+Prefixes.SigmaPrefix.DisplayName: Sigma Prefix
+InfoDisplays.SigmaCounterDisplay.DisplayName: Sigma Counter Display

@@ -43,7 +43,9 @@ namespace TerrariaEpicVerision.Items
 			Item.consumable = true;
 			Item.maxStack = 9999;
 
-			Item.useAnimation = 15;
+            Item.buyPrice(2, 12, 0, 0);
+
+            Item.useAnimation = 15;
 			Item.useTime = 15;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTurn = true;
@@ -52,11 +54,7 @@ namespace TerrariaEpicVerision.Items
 			Item.createTile = ModContent.TileType<RiseStuffTile>();
 		}
 
-		public override bool CanUseItem(Player player)
-		{
-
-			return true;
-		}
-	}
+        public override bool CanUseItem(Player player) => true;
+    }
 }
 

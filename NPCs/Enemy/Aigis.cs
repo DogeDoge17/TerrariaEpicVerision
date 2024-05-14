@@ -21,6 +21,7 @@ using Terraria.ModLoader.Utilities;
 using TerrariaEpicVerision.Dusts;
 using TerrariaEpicVerision.Gores;
 using TerrariaEpicVerision.Items;
+using TerrariaEpicVerision.Items.Aigis;
 using TerrariaEpicVerision.NPCs.Enemy.Persona;
 
 //no I didn't resuse code... thanks for asking
@@ -273,7 +274,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                 NPC.spriteDirection = 0;
             }
 
-            Console.WriteLine("Persona Summon Timer: " + MathF.Ceiling(personaSummonTimer));
+            //Console.WriteLine("Persona Summon Timer: " + MathF.Ceiling(personaSummonTimer));
 
             if (personaSummonTimer <= 0)
             {
@@ -306,6 +307,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
                     }
                     PallasAthena.tempAigis = this;
+                    PallasAthena.orgiaStack = (byte)(orgiaMode.ToInt() +1);
                     NPC.NewNPC(null, (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<PallasAthena>());
                 }
             }
@@ -339,7 +341,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                         }
                         else
                         {
-                            Console.WriteLine("Failed To activate");
+                            //Console.WriteLine("Failed To activate");
                             orgiaActivateTimer = 5;
                         }
                     }
@@ -470,6 +472,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.IronBar, 1, 1, 5));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GunBarrel>(), 70, 1, 1));
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

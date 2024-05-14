@@ -40,7 +40,9 @@ namespace TerrariaEpicVerision.Items
 			Item.width = 48;
 			Item.height = 34;
 
-			Item.consumable = true;
+            Item.buyPrice(1, 3, 0, 0);
+
+            Item.consumable = true;
 			Item.maxStack = 9999;
 			Item.useAnimation = 15;
 			Item.useTime = 15;

@@ -46,7 +46,12 @@ namespace TerrariaEpicVerision.Items
 			Item.noMelee = true;
 		}
 
-		public override void AddRecipes()
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            tooltips.FirstOrDefault(tooltip => tooltip.Name == "Speed" && tooltip.Mod == "Terraria").Text = "NIGGER Speed";
+        }
+
+        public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.RottenChunk, 20);

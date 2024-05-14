@@ -19,7 +19,7 @@ namespace TerrariaEpicVerision
 
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
-        [Label("Use the orignal low resolution textures")]
+        //[Label("Use the orignal low resolution textures")]
         public bool _useLowRes = false;
 
         public override void OnChanged()

@@ -1,22 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria.IO;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Utilities;
-using TerrariaEpicVerision.Gores;
-using TerrariaEpicVerision.Items;
+using Terraria.GameContent;
+using Terraria.Social.WeGame;
+using Steamworks;
 
 //no I didn't resuse code... thanks for asking
 namespace TerrariaEpicVerision.NPCs.Enemy.Persona
@@ -29,7 +22,10 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 
         public override Asset<Texture2D> largeImage => ModContent.Request<Texture2D>("TerrariaEpicVerision/NPCs/Enemy/Persona/PallasAthena High Res");
 
+        public static byte orgiaStack;
 
+        private bool orgiaMode = false;
+        
         public override void SetStaticDefaults()
         {
             //DisplayName.SetDefault("Athena"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -37,7 +33,15 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 
         public override void SetDefaults()
         {
-            NPC.damage = 50;
+            if (orgiaStack == 2)
+            {
+                orgiaMode = true;
+            }
+            orgiaStack = 0;
+
+            if (!orgiaMode)
+                NPC.damage = 50;
+            else NPC.damage = 0x96;
             NPC.width = 152;
             NPC.height = 101;
             NPC.value = 0;
@@ -52,11 +56,17 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 
             source = new Rectangle(0, 0, 750, 600);
 
-
-            if (tempAigis != null)
+            try
             {
-                aigis = tempAigis;
-                tempAigis = null;
+                if (tempAigis != null)
+                {
+                    aigis = tempAigis;
+                    tempAigis = null;
+                }
+            }
+            catch
+            {
+                aigis = null;
             }
 
         }
@@ -118,6 +128,18 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 
         public override void AI()
         {
+
+            if (aigis != null)
+            {
+                if(aigis.NPC.life <= 0)
+                {
+                    for (int d = 0; d < 5; d++)
+                    {
+                        Gore.NewGore(null, new Vector2(NPC.position.X + (NPC.width / 2), NPC.position.Y + (NPC.height / 2)), new Vector2(), GoreID.Smoke1, 1.5f);
+                    }
+                    NPC.life = 0;         
+                }
+            }
 
             if (Main.LocalPlayer.position.X > NPC.position.X)
             {
