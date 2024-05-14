@@ -48,7 +48,7 @@ namespace TerrariaEpicVerision.Items
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            tooltips.FirstOrDefault(tooltip => tooltip.Name == "Speed" && tooltip.Mod == "Terraria").Text = "NIGGER Speed";
+            tooltips.FirstOrDefault(tooltip => tooltip.Name == "Speed" && tooltip.Mod == "Terraria").Text = "awesome Speed";
         }
 
         public override void AddRecipes()
