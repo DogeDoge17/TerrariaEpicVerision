@@ -118,6 +118,18 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 
         public override void AI()
         {
+            if (akihiko != null)
+            {
+                if (akihiko.NPC.life <= 0)
+                {
+                    for (int d = 0; d < 5; d++)
+                    {
+                        Gore.NewGore(null, new Vector2(NPC.position.X + (NPC.width / 2), NPC.position.Y + (NPC.height / 2)), new Vector2(), GoreID.Smoke1, 1.5f);
+                    }
+                    NPC.life = 0;
+                }
+            }
+
             if (Main.LocalPlayer.position.X > NPC.position.X)
             {
                 NPC.spriteDirection = 1;

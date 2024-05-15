@@ -44,6 +44,11 @@ Items: {
 		DisplayName: Gun Barrel
 		Tooltip: ""
 	}
+
+	Opium: {
+		DisplayName: Opium
+		Tooltip: ""
+	}
 }
 
 Projectiles.Kamehameha.DisplayName: Kamehameha

@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 using TerrariaEpicVerision.Gores;
+using TerrariaEpicVerision.Items;
 
 
 namespace TerrariaEpicVerision.NPCs.Critter
@@ -185,7 +186,7 @@ namespace TerrariaEpicVerision.NPCs.Critter
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Opium>(), 10, 1, 2));
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
