@@ -191,7 +191,7 @@ namespace TerrariaEpicVerision.NPCs.Critter
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldDayGrassCritter.Chance * .3f;
+            return SpawnCondition.OverworldDayGrassCritter.Chance;
         }
     }
 }

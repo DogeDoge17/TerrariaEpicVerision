@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
@@ -14,7 +15,10 @@ namespace TerrariaEpicVerision.NPCs
     {
         public abstract Asset<Texture2D> largeImage { get; }
 
-        public Rectangle source;
+        // public Rectangle source { get { return frames[activeFrame].Item2; } set { frames[activeFrame] = new Tuple<Rectangle, Rectangle>(frames[activeFrame].Item1, value); } }
+        public Rectangle source; //{ get { return frames[activeFrame].Item2; } set { frames[activeFrame] = new Tuple<Rectangle, Rectangle>(frames[activeFrame].Item1, value); } }
+
+        public int activeFrame;
 
         public float scale = 0.05f;
 
@@ -24,10 +28,11 @@ namespace TerrariaEpicVerision.NPCs
 
         //public bool autoSource = true;
 
+       // List<Tuple<Rectangle, Rectangle>> frames = new() { new Tuple<Rectangle, Rectangle>(new Rectangle(), new Rectangle()) };
         public override void SetDefaults()
         {
             //if (source == null || autoSource == true)
-            //    source = new Rectangle(0, 0, largeImage.Width(), largeImage.Height());
+            //    source = new Rectangle(0, 0, largeImage.Width(), largeImage.Height());            
 
             base.SetDefaults();
         }
@@ -38,8 +43,10 @@ namespace TerrariaEpicVerision.NPCs
             {
                 if (!autoScale)
                     spriteBatch.Draw(((Texture2D)largeImage), NPC.position - screenPos, source, drawColor, 0, new Vector2(0, 0), scale, RandomTools.IntToFlip(NPC.spriteDirection), 0);
+                   // spriteBatch.Draw(((Texture2D)largeImage), NPC.position - screenPos, frames[activeFrame].Item2, drawColor, 0, new Vector2(0, 0), scale, RandomTools.IntToFlip(NPC.spriteDirection), 0);
                 else
                     spriteBatch.Draw(((Texture2D)largeImage), NPC.position - screenPos, source, drawColor, 0, new Vector2(0, 0), (float)(NPC.width + NPC.height) / (float)(source.Width + source.Height), RandomTools.IntToFlip(NPC.spriteDirection), 0);
+                   // spriteBatch.Draw(((Texture2D)largeImage), NPC.position - screenPos, frames[activeFrame].Item2, drawColor, 0, new Vector2(0, 0), (float)(NPC.width + NPC.height) / (float)(source.Width + source.Height), RandomTools.IntToFlip(NPC.spriteDirection), 0);
 
                 // Debug.WriteLine((float)(NPC.width + NPC.height) / (float)(source.Width + source.Height) + " NPC: " + NPC.width + " " + NPC.height + " " + (NPC.width + NPC.height) + " Rect: " + source.Width + " " + source.Height + " " + (source.Width + source.Height));
 
@@ -47,6 +54,7 @@ namespace TerrariaEpicVerision.NPCs
             }
             else
             {
+                //NPC.frame = frames[activeFrame].Item1;  
                 return true;
             }
         }
