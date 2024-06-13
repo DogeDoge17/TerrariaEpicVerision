@@ -1,4 +1,4 @@
-# terraria-epic-verision
+# terraria-epic-Verision
 
 a terraria mod i made with a bunch of random stuff in it.
 

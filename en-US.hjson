@@ -1,29 +1,29 @@
 Mods: {
 	TerrariaEpicVerision: {
-		InfoDisplays.SigmaCounterDisplay.DisplayName: Sigma Counter
+		InfoDisplays.SigmaCounterDisplay.DisplayName: Sigma Counter Display
 
 		NPCs: {
-			Chiyo.DisplayName: Chiyo-chan
+			Chiyo.DisplayName: Chiyo
 			KenCarson.DisplayName: Ken Carson
-			Aigis.DisplayName: Aigis Persona 3
-			Akihiko.DisplayName: Akihiko Persona 3
+			Aigis.DisplayName: Aigis
+			Akihiko.DisplayName: Akihiko
 			Goku.DisplayName: Goku
-			BuffcoArc.DisplayName: Buff Neco Arc
-			JungleArc.DisplayName: Jungle Neco Arc
+			BuffcoArc.DisplayName: Buffco Arc
+			JungleArc.DisplayName: Jungle Arc
 			NecoArc.DisplayName: Neco Arc
-			SnowArc.DisplayName: Snow Neco Arc
-			WetArc.DisplayName: Wet Neco Arc
+			SnowArc.DisplayName: Snow Arc
+			WetArc.DisplayName: Wet Arc
 			Osaka.DisplayName: Osaka
 			Caesar.DisplayName: Caesar
-			PallasAthena.DisplayName: Athena
-			Ryuji.DisplayName: Ryuji Persona 5
+			PallasAthena.DisplayName: Pallas Athena
+			Ryuji.DisplayName: Ryuji
 
 			Drake: {
 				DisplayName: Drake
 
 				TownNPCMood: {
 					Content: I am content.
-					NoHome: I hate not having a home. I am drake lol
+					NoHome: I hate not having a home.
 					FarFromHome: I am too far from home.
 					LoveSpace: I love having so much space.
 					DislikeCrowded: I dislike how crowded I am.
@@ -48,13 +48,13 @@ Mods: {
 			}
 
 			AigisStuffPainting: {
-				DisplayName: Aigis Persona Three Stuff painting
-				Tooltip: im stuff
+				DisplayName: Aigis Stuff Painting
+				Tooltip: ""
 			}
 
 			AryanPotion: {
 				DisplayName: Aryan Potion
-				Tooltip: You can now be the perfect version of yourself
+				Tooltip: ""
 			}
 
 			balls: {
@@ -74,12 +74,12 @@ Mods: {
 
 			Isaac: {
 				DisplayName: Isaac
-				Tooltip: Is this a "The Binding of Isaac" reference??
+				Tooltip: ""
 			}
 
 			MakotoStuffPainting: {
-				DisplayName: Makoto Persona Five Stuff painting
-				Tooltip: im stuff
+				DisplayName: Makoto Stuff Painting
+				Tooltip: ""
 			}
 
 			Opium: {
@@ -98,12 +98,12 @@ Mods: {
 			}
 
 			RiseStuffPainting: {
-				DisplayName: Rise Persona Four Stuff painting
-				Tooltip: im stuff
+				DisplayName: Rise Stuff Painting
+				Tooltip: ""
 			}
 		}
 
-		Prefixes.SigmaPrefix.DisplayName: Sigma
+		Prefixes.SigmaPrefix.DisplayName: Sigma Prefix
 
 		Projectiles: {
 			Magic.FishyBall.DisplayName: Fishy Ball
@@ -115,13 +115,13 @@ Mods: {
 				DisplayName: Config
 
 				_useLowRes: {
-					Label: Use the orignal low resolution textures
+					Label: _use Low Res
 					Tooltip: ""
 				}
 
 				_nanakoEnabled: {
-					Label: Nanako greeting
-					Tooltip: Enablinb this will make Nanako from persona 4 greet you upon entering spawn
+					Label: _nanako Enabled
+					Tooltip: ""
 				}
 			}
 		}

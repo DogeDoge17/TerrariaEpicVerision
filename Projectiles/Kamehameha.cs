@@ -30,6 +30,8 @@ namespace TerrariaEpicVerision.Projectiles
         //public override string Texture => "Terraria/Projectile_" + ProjectileID.LastPrism;
 
 
+        public static byte frameStack;
+
         public override void SetStaticDefaults()
         {
             //DisplayName.SetDefault("Kamehameha"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -40,7 +42,7 @@ namespace TerrariaEpicVerision.Projectiles
         {
             Projectile.width = 64;
             Projectile.height = 64;
-            Projectile.timeLeft = 300;
+            Projectile.timeLeft = 1;
             Projectile.penetrate = -1;
             Projectile.hostile = true;
             Projectile.DamageType = DamageClass.Magic;

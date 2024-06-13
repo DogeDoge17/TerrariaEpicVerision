@@ -1,30 +1,25 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using Terraria;
-using Terraria.IO;
-using Terraria.ModLoader;
+using System.ComponentModel;
 using Terraria.ModLoader.Config;
 using Terraria.ModLoader.Config.UI;
 
 namespace TerrariaEpicVerision
 {
-    public class Config : ModConfig
+    public class Config : ModConfig     
     {
         public static bool useLowRes = false;
+        public static bool nanakoEnabled = true;
 
         public override ConfigScope Mode => ConfigScope.ClientSide;
-
-        //[Label("Use the orignal low resolution textures")]
+        
         public bool _useLowRes = false;
+        [DefaultValue(true)]
+        public bool _nanakoEnabled = true;
 
         public override void OnChanged()
         {
             useLowRes = _useLowRes;
+            nanakoEnabled = _nanakoEnabled;
             base.OnChanged();
         }
     }

@@ -8,7 +8,7 @@ namespace TerrariaEpicVerision.Prefixes
         // We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
         public virtual float Power => 2f;
         public virtual float Knockback => 2f;
-        public virtual float UseTime => 2f;
+        public virtual float UseTime => -1.2f;
         public virtual float Scale => 2f;
         public virtual float ShootSpeed => 2f;
         public virtual float Mana => 2f;

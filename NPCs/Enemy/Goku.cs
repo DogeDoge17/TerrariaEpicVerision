@@ -18,6 +18,7 @@ using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
+using Terraria.Physics;
 using TerrariaEpicVerision.Dusts;
 using TerrariaEpicVerision.Gores;
 using TerrariaEpicVerision.Items;
@@ -252,6 +253,8 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             {
                 //SoundEngine.PlaySound(SoundID.Coins, NPC.position);
                 //Projectile.NewProjectile(null, NPC.Center, new Vector2(10 * direction, 0), ModContent.ProjectileType<Kamehameha>(), 50, 2, 255, direction);
+
+                
 
                 kamehamehaTimeout = 2;
 

@@ -3,7 +3,7 @@
   <Import Project="..\tModLoader.targets" />
   <PropertyGroup>
     <AssemblyName>TerrariaEpicVerision</AssemblyName>
-    <LangVerision>latest</LangVerision>
+    <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>

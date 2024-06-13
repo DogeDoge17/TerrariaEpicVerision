@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 using UIImage = TerrariaEpicVerision.UI.UIImage;
@@ -14,6 +15,8 @@ namespace TerrariaEpicVerision.NPCs
     public abstract class HighResNPC : ModNPC
     {
         public abstract Asset<Texture2D> largeImage { get; }
+        public virtual Asset<Texture2D> shimmerLargeImage { get; } = null;
+        public virtual Asset<Texture2D> shimmerTransformLargeImage { get; } = null;
 
         // public Rectangle source { get { return frames[activeFrame].Item2; } set { frames[activeFrame] = new Tuple<Rectangle, Rectangle>(frames[activeFrame].Item1, value); } }
         public Rectangle source; //{ get { return frames[activeFrame].Item2; } set { frames[activeFrame] = new Tuple<Rectangle, Rectangle>(frames[activeFrame].Item1, value); } }
@@ -38,17 +41,25 @@ namespace TerrariaEpicVerision.NPCs
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-        {
+        {            
             if (!Config.useLowRes || forceHighRes)
             {
-                if (!autoScale)
-                    spriteBatch.Draw(((Texture2D)largeImage), NPC.position - screenPos, source, drawColor, 0, new Vector2(0, 0), scale, RandomTools.IntToFlip(NPC.spriteDirection), 0);
-                   // spriteBatch.Draw(((Texture2D)largeImage), NPC.position - screenPos, frames[activeFrame].Item2, drawColor, 0, new Vector2(0, 0), scale, RandomTools.IntToFlip(NPC.spriteDirection), 0);
+                Asset<Texture2D> text;
+                float leScale;
+                if (autoScale)
+                    leScale = (float)(NPC.width + NPC.height) / (float)(source.Width + source.Height);
                 else
-                    spriteBatch.Draw(((Texture2D)largeImage), NPC.position - screenPos, source, drawColor, 0, new Vector2(0, 0), (float)(NPC.width + NPC.height) / (float)(source.Width + source.Height), RandomTools.IntToFlip(NPC.spriteDirection), 0);
-                   // spriteBatch.Draw(((Texture2D)largeImage), NPC.position - screenPos, frames[activeFrame].Item2, drawColor, 0, new Vector2(0, 0), (float)(NPC.width + NPC.height) / (float)(source.Width + source.Height), RandomTools.IntToFlip(NPC.spriteDirection), 0);
+                    leScale = scale;
 
-                // Debug.WriteLine((float)(NPC.width + NPC.height) / (float)(source.Width + source.Height) + " NPC: " + NPC.width + " " + NPC.height + " " + (NPC.width + NPC.height) + " Rect: " + source.Width + " " + source.Height + " " + (source.Width + source.Height));
+
+                if ((NPCID.Sets.ShimmerTownTransform[NPC.type] == true || NPCID.Sets.ShimmerTownTransform[Type] == true) && NPC.IsShimmerVariant)
+                    text = shimmerLargeImage;
+                else if (NPC.shimmering)
+                    text = shimmerTransformLargeImage;
+                else
+                    text = largeImage;
+
+                spriteBatch.Draw(((Texture2D)text), NPC.position - screenPos, source, drawColor, 0, new Vector2(0, 0), leScale, RandomTools.IntToFlip(NPC.spriteDirection), 0);
 
                 return false;
             }

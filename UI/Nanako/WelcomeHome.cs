@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,8 @@ namespace TerrariaEpicVerision.UI.Nanako
         private float playAgainTimer = 0;
         private float playAgainInterval = 60f;
 
+
+
         public override void Load()
         {
             if (!Main.dedServ)
@@ -35,7 +38,7 @@ namespace TerrariaEpicVerision.UI.Nanako
                 MyInterface = new UserInterface();
 
                 MyUI = new WelcomeHomeUI();
-                MyUI.Activate(); // Activate calls Initialize() on the UIState if not initialized, then calls OnActivate and then calls Activate on every child element
+                MyUI.Activate();
             }
 
             base.Load();
@@ -43,7 +46,6 @@ namespace TerrariaEpicVerision.UI.Nanako
 
         public override void Unload()
         {
-            //MyUI?.SomeKindOfUnload(); // If you hold data that needs to be unloaded, call it in OO-fashion
             MyUI = null;
 
             base.Unload();
@@ -53,9 +55,17 @@ namespace TerrariaEpicVerision.UI.Nanako
 
         public override void UpdateUI(GameTime gameTime)
         {
-            //Console.WriteLine(Vector3.Distance(new Vector3(Main.LocalPlayer.oldPosition.X, Main.LocalPlayer.oldPosition.Y, 0), new Vector3(Main.spawnTileX * 16, Main.spawnTileY * 16, 0)));
+            if (!Config.nanakoEnabled)
+            {
+                if (MyInterface?.CurrentState != null)
+                    HideMyUI();
+                return;
+            }
 
-            if (Vector3.Distance(new Vector3(Main.LocalPlayer.oldPosition.X, Main.LocalPlayer.oldPosition.Y, 0), new Vector3(Main.spawnTileX * 16, Main.spawnTileY * 16, 0)) < 879.75f) /*(IsWithin((int)Main.LocalPlayer.oldPosition.X, (Main.spawnTileX - 55) * 16, (Main.spawnTileX + 55) * 16) && IsWithin((int)Main.LocalPlayer.oldPosition.Y, (Main.spawnTileY - 55) * 16, (Main.spawnTileY + 55) * 16))*/ //(Enumerable.Range((Main.spawnTileX - 30) * 16, (Main.spawnTileX + 30) * 16).Contains((int)Main.LocalPlayer.oldPosition.X))//((Main.LocalPlayer.oldPosition.X <= (Main.spawnTileX + 30) * 16 && Main.clientPlayer.oldPosition.X >= (Main.spawnTileX - 30) * 16))
+            //Console.WriteLine(Vector3.Distance(new Vector3(Main.LocalPlayer.oldPosition.X, Main.LocalPlayer.oldPosition.Y, 0), new Vector3(Main.spawnTileX * 16, Main.spawnTileY * 16, 0)));
+            //Main.LocalPlayer.moveSpeed = -0.4f;
+            Rectangle mouseRect = new(Main.mouseX, Main.mouseY, 0, 0);
+            if (Vector3.Distance(new Vector3(Main.LocalPlayer.oldPosition.X, Main.LocalPlayer.oldPosition.Y, 0), new Vector3(Main.spawnTileX * 16, Main.spawnTileY * 16, 0)) < 879.75f && !mouseRect.Intersects(new Rectangle(0, 0, 1152, 220))) /*(IsWithin((int)Main.LocalPlayer.oldPosition.X, (Main.spawnTileX - 55) * 16, (Main.spawnTileX + 55) * 16) && IsWithin((int)Main.LocalPlayer.oldPosition.Y, (Main.spawnTileY - 55) * 16, (Main.spawnTileY + 55) * 16))*/ //(Enumerable.Range((Main.spawnTileX - 30) * 16, (Main.spawnTileX + 30) * 16).Contains((int)Main.LocalPlayer.oldPosition.X))//((Main.LocalPlayer.oldPosition.X <= (Main.spawnTileX + 30) * 16 && Main.clientPlayer.oldPosition.X >= (Main.spawnTileX - 30) * 16))
             {
                 hideTimer -= 1 * Time.deltaTime;
                 if (!alreadyPlayed && playAgainTimer < 0)
@@ -69,7 +79,7 @@ namespace TerrariaEpicVerision.UI.Nanako
 
                 }
 
-                if(hideTimer < 0)
+                if (hideTimer < 0)
                 {
                     HideMyUI();
                 }
@@ -87,8 +97,12 @@ namespace TerrariaEpicVerision.UI.Nanako
             _lastUpdateUiGameTime = gameTime;
             if (MyInterface?.CurrentState != null)
             {
+                if (mouseRect.Intersects(new Rectangle(0, 0, 1152, 220))) HideMyUI();
+
                 MyInterface.Update(gameTime);
             }
+
+
         }
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
@@ -124,8 +138,6 @@ namespace TerrariaEpicVerision.UI.Nanako
         {
             MyInterface?.SetState(null);
         }
-
-
     }
 
     internal class WelcomeHomeUI : UIState
@@ -138,11 +150,11 @@ namespace TerrariaEpicVerision.UI.Nanako
 
         public static bool Visible = true;
 
-        public override void OnInitialize() // 1
+        public override void OnInitialize()
         {
             UIPanel panel = new UIPanel(null, null, 0, 4);
-            panel.Width.Set(1152, 0); // 3
-            panel.Height.Set(220, 0); // 3
+            panel.Width.Set(1152, 0);
+            panel.Height.Set(220, 0);
 
             UIImage image = new UIImage(ModContent.Request<Texture2D>("TerrariaEpicVerision/UI/Nanako/WelcomeHome"), new Rectangle(0, 0, 1152, 220));
             image.Width = panel.Width;
@@ -150,12 +162,11 @@ namespace TerrariaEpicVerision.UI.Nanako
             image.SetImage(ModContent.Request<Texture2D>("TerrariaEpicVerision/UI/Nanako/WelcomeHome"), new Rectangle(0, 0, 1152, 220));
             panel.Append(image);
 
-            Append(panel); // 4
+            Append(panel);
         }
 
         public override void Update(GameTime gameTime)
         {
-
             base.Update(gameTime);
         }
 
