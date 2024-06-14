@@ -265,14 +265,15 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             }
 
 
-            if (Main.LocalPlayer.position.X > NPC.position.X)
-            {
-                NPC.spriteDirection = 1;
-            }
-            else
-            {
-                NPC.spriteDirection = 0;
-            }
+            //if (Main.LocalPlayer.position.X > NPC.position.X)
+            //{
+            //    NPC.spriteDirection = 1;
+            //}
+            //else
+            //{
+            //    NPC.spriteDirection = 0;
+            //}
+            NPC.spriteDirection = NPC.direction;
 
             //Console.WriteLine("Persona Summon Timer: " + MathF.Ceiling(personaSummonTimer));
 
@@ -477,7 +478,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.Player.ZoneForest ? SpawnCondition.OverworldNightMonster.Chance * 0.1f : 0f;
+            return spawnInfo.Player.ZoneForest ? SpawnCondition.OverworldNightMonster.Chance * 0.07f : 0f;
         }
     }
 }

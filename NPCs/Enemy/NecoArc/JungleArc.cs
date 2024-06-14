@@ -116,14 +116,16 @@ namespace TerrariaEpicVerision.NPCs.Enemy.NecoArc
             noiseTimer -= 1 * Time.deltaTime;
 
 
-            if (Main.LocalPlayer.position.X > NPC.position.X)
-            {
-                NPC.spriteDirection = 0;
-            }
-            else
-            {
-                NPC.spriteDirection = 1;
-            }
+            //if (Main.LocalPlayer.position.X > NPC.position.X)
+            //{
+            //    NPC.spriteDirection = 0;
+            //}
+            //else
+            //{
+            //    NPC.spriteDirection = 1;
+            //}
+            NPC.spriteDirection = -NPC.direction;
+
 
 
             if (noiseTimer <= 0)
@@ -165,11 +167,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy.NecoArc
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (!Main.hardMode && spawnInfo.Player.ZoneJungle)
-            {
-                return SpawnCondition.SurfaceJungle.Chance * 0.7f;
-            }
-            else if (Main.hardMode && spawnInfo.Player.ZoneJungle)
+            if(spawnInfo.Player.ZoneJungle)
             {
                 return SpawnCondition.HardmodeJungle.Chance * 0.7f;
             }

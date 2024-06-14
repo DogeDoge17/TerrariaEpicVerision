@@ -51,9 +51,26 @@ namespace TerrariaEpicVerision.NPCs.TownNPC
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
-
             source = new Rectangle(0, 0, 172, 296);
+        }
 
+        public override void AI()
+        {
+            NPC.spriteDirection = NPC.direction;
+
+            base.AI();
+        }
+
+        public override string GetChat()
+        {
+            if (Main.raining && Main._rand.NextBool(4))
+                return PapiChat($"Rain{Main._rand.Next(3) + 1}");
+
+            if (Main.masterMode && Main._rand.NextBool(25))
+                return PapiChat($"Master1");
+            
+
+            return PapiChat($"Chat{Main._rand.Next(9)+1}");            
         }
 
         public override bool CanTownNPCSpawn(int numTownNPCs) => Main.npc.Any(npc => npc.type == NPCID.Princess) | Main.npc.Any(npc => npc.type == NPCID.Angler);
@@ -61,7 +78,7 @@ namespace TerrariaEpicVerision.NPCs.TownNPC
         public override bool CanGoToStatue(bool toKingStatue) => true;
         public override List<string> SetNPCNameList() => new List<string>() {"Drake", "Drizzy", "Aubrey", "Mr OVOXO", "Champagne Papi" };
 
-        private static string PapiChat(string key, params object[] args) => Language.GetTextValue($"Mods.TerrariaEpicVerision.NPCs.LumberJack.Chat.{key}", args);
+        private static string PapiChat(string key, params object[] args) => Language.GetTextValue($"Mods.TerrariaEpicVerision.NPCs.Drake.Chat.{key}", args);
     }
 
     public class DrakeProfile : ITownNPCProfile

@@ -60,7 +60,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             NPC.width = 47;
             NPC.height = 92;
             NPC.value = 1500;
-            NPC.lifeMax = 250;
+            NPC.lifeMax = 450;
             NPC.scale = 0.9f;
             NPC.HitSound = RandomHitNoise();
             NPC.DeathSound = RandomDeathNoise();
@@ -90,7 +90,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
-                new FlavorTextBestiaryInfoElement("Yeah, okay, but you can't beat Goku. smh"),
+                new FlavorTextBestiaryInfoElement("Yeah, okay, but you can't beat Goku"),
             });
         }
 
@@ -233,16 +233,19 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             }
 
 
-            if (Main.LocalPlayer.position.X > NPC.position.X)
-            {
-                NPC.spriteDirection = 1;
-                direction = 1;
-            }
-            else
-            {
-                NPC.spriteDirection = 0;
-                direction = -1;
-            }
+            //if (Main.LocalPlayer.position.X > NPC.position.X)
+            //{
+            //    NPC.spriteDirection = 1;
+            //    direction = 1;
+            //}
+            //else
+            //{
+            //    NPC.spriteDirection = 0;
+            //    direction = -1;
+            //}
+
+            NPC.spriteDirection = NPC.direction;
+            direction = NPC.direction;
 
 
             //Console.WriteLine("Orgia Mode: " + orgiaMode + " Overheating: " + overheating + " Orgia Activate Timer: " + MathF.Ceiling(orgiaActivateTimer) + " Orgia Timer: " + MathF.Ceiling(orgiaTimer) + " Said Orgia:" + saidOrgia + " Smoke Timer: " + smokeTimer);
@@ -258,7 +261,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
                 kamehamehaTimeout = 2;
 
-                NPC.knockBackResist = 1f;
+                NPC.knockBackResist = 0f;
                 NPC.aiStyle = -1;
             }
             else if (the >= 0)
@@ -378,7 +381,8 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1, 1, 5));
+            if(Main.hardMode)
+                npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1, 1, 5));
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

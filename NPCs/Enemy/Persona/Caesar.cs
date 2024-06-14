@@ -130,14 +130,17 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
                 }
             }
 
-            if (Main.LocalPlayer.position.X > NPC.position.X)
-            {
-                NPC.spriteDirection = 1;
-            }
-            else
-            {
-                NPC.spriteDirection = 0;
-            }
+            //if (Main.LocalPlayer.position.X > NPC.position.X)
+            //{
+            //    NPC.spriteDirection = 1;
+            //}
+            //else
+            //{
+            //    NPC.spriteDirection = 0;
+            //}
+
+            NPC.spriteDirection = NPC.direction;
+
 
             base.AI();
         }

@@ -142,6 +142,8 @@ namespace TerrariaEpicVerision.NPCs.Enemy.NecoArc
                 NPC.spriteDirection = 1;
             }
 
+            NPC.spriteDirection = -NPC.direction;
+
 
             if (snowTimer <= 0)
             {
@@ -183,7 +185,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy.NecoArc
         {
             if (Main.hardMode && spawnInfo.Player.ZoneSnow)
             {
-                return SpawnCondition.OverworldNightMonster.Chance * 0.7f;
+                return SpawnCondition.OverworldNightMonster.Chance * 0.6f;
             }
 
 

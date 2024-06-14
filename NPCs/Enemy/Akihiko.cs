@@ -276,14 +276,17 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                 }
             }
 
-            if (Main.LocalPlayer.position.X > NPC.position.X)
-            {
-                NPC.spriteDirection = 1;
-            }
-            else
-            {
-                NPC.spriteDirection = 0;
-            }
+            //if (Main.LocalPlayer.position.X > NPC.position.X)
+            //{
+            //    NPC.spriteDirection = 1;
+            //}
+            //else
+            //{
+            //    NPC.spriteDirection = 0;
+            //}
+
+            NPC.spriteDirection = NPC.direction;
+
 
             if (noiseTimer <= 0)
             {
@@ -322,12 +325,13 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1));
+            if (Main.hardMode)
+                npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1));
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.Player.ZoneForest ? SpawnCondition.OverworldNightMonster.Chance * 0.2f : 0f;
+            return spawnInfo.Player.ZoneForest ? SpawnCondition.OverworldNightMonster.Chance * 0.1f : 0f;
         }
     }
 

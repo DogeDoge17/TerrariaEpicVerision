@@ -1,129 +1,141 @@
-Mods: {
-	TerrariaEpicVerision: {
-		InfoDisplays.SigmaCounterDisplay.DisplayName: Sigma Counter
+NPCs: {
+	Chiyo.DisplayName: Chiyo-chan
+	Aigis.DisplayName: Aigis Persona 3
+	Akihiko.DisplayName: Akihiko Persona 3
+	BuffcoArc.DisplayName: Buff Neco Arc
+	JungleArc.DisplayName: Jungle Neco Arc
+	NecoArc.DisplayName: Neco Arc
+	SnowArc.DisplayName: Snow Neco Arc
+	WetArc.DisplayName: Wet Neco Arc
+	Osaka.DisplayName: Osaka
+	Caesar.DisplayName: Caesar
+	PallasAthena.DisplayName: Athena
+	Ryuji.DisplayName: Ryuji Persona 5
+	KenCarson.DisplayName: Ken Carson
+	Goku.DisplayName: Goku
 
-		NPCs: {
-			Chiyo.DisplayName: Chiyo-chan
-			KenCarson.DisplayName: Ken Carson
-			Aigis.DisplayName: Aigis Persona 3
-			Akihiko.DisplayName: Akihiko Persona 3
-			Goku.DisplayName: Goku
-			BuffcoArc.DisplayName: Buff Neco Arc
-			JungleArc.DisplayName: Jungle Neco Arc
-			NecoArc.DisplayName: Neco Arc
-			SnowArc.DisplayName: Snow Neco Arc
-			WetArc.DisplayName: Wet Neco Arc
-			Osaka.DisplayName: Osaka
-			Caesar.DisplayName: Caesar
-			PallasAthena.DisplayName: Athena
-			Ryuji.DisplayName: Ryuji Persona 5
+	Drake: {
+		DisplayName: Drake
+		Census.SpawnCondition: Have a minor move in
 
-			Drake: {
-				DisplayName: Drake
-
-				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home. I am drake lol
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					HateBiome: I hate {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
+		Chat: {
+			Chat1: This is my alter ego. Anita Max Wynn~!
+			Chat2: Highschool pics, you was even bad then.
+			Chat3: You gotta be nice for what to these peopleofcolour.
+			Chat4: It's your hecking birthday! I was told not to say fuck, sorry.
+			Chat5: You talk so tough, I know you're soft like buttercups.
+			Chat6: I GOT THE 305 TO MY CITY I GET IT I GET IT
+			Chat7: Stream my album please.
+			Chat8: GIRL YOU JUST DID IT. I GET IT, I GET IT, MAN FUCK ALL THAT TALKING TAKE SHOTS TO THE KIDNEY.
+			Chat9: All of my dogs say: woof!
+			Rain1: I don't like the rain. I'm scared I'll get my nails wet
+			Rain2: It's raining! It's pouring! The old man is snoring! Old... gross
+			Rain3: The sound of rain makes my brain go all tinglely.
+			Master1: woaw master mode. youre like a master! or something. I am Drake.
 		}
 
-		Items: {
-			GunBarrel: {
-				DisplayName: Gun Barrel
-				Tooltip: ""
-			}
-
-			AigisStuffPainting: {
-				DisplayName: Aigis Persona Three Stuff painting
-				Tooltip: im stuff
-			}
-
-			AryanPotion: {
-				DisplayName: Aryan Potion
-				Tooltip: You can now be the perfect version of yourself
-			}
-
-			balls: {
-				DisplayName: balls
-				Tooltip: ""
-			}
-
-			GermanFish: {
-				DisplayName: German Fish
-				Tooltip: ""
-			}
-
-			FishyIsaac: {
-				DisplayName: Fishy Isaac
-				Tooltip: ""
-			}
-
-			Isaac: {
-				DisplayName: Isaac
-				Tooltip: Is this a "The Binding of Isaac" reference??
-			}
-
-			MakotoStuffPainting: {
-				DisplayName: Makoto Persona Five Stuff painting
-				Tooltip: im stuff
-			}
-
-			Opium: {
-				DisplayName: Opium
-				Tooltip: ""
-			}
-
-			DirtPlatform: {
-				DisplayName: Dirt Platform
-				Tooltip: ""
-			}
-
-			StonePlatform: {
-				DisplayName: Stone Platform
-				Tooltip: ""
-			}
-
-			RiseStuffPainting: {
-				DisplayName: Rise Persona Four Stuff painting
-				Tooltip: im stuff
-			}
-		}
-
-		Prefixes.SigmaPrefix.DisplayName: Sigma
-
-		Projectiles: {
-			Magic.FishyBall.DisplayName: Fishy Ball
-			Kamehameha.DisplayName: Kamehameha
-		}
-
-		Configs: {
-			Config: {
-				DisplayName: Config
-
-				_useLowRes: {
-					Label: Use the orignal low resolution textures
-					Tooltip: ""
-				}
-
-				_nanakoEnabled: {
-					Label: Nanako greeting
-					Tooltip: Enablinb this will make Nanako from persona 4 greet you upon entering spawn
-				}
-			}
+		TownNPCMood: {
+			Content: Kiki, do you love meeeee?
+			NoHome: I hate not having a home. I am drake lol.
+			FarFromHome: Where am I vro what the tf.
+			LoveSpace: Yass now I can litch slay in peace with alllll this space.
+			DislikeCrowded: Too many people... Too many.. eyes.
+			HateCrowded: BRO! how am i supposed to make my moves with all these people. Actually kill yourself vro.
+			LikeBiome: I love it down in {BiomeName}!
+			DislikeBiome: I do NOT like it here. IT SUCKSS I HAET YOU YOU ALWAYS DO THISEFEUSJIBVF :IUSDKJHNM
+			HateBiome: What the tf man you know I hate the {BiomeName}. I am Drake.
+			LoveNPC: "{NPCName} actually bad asf bro like WHAT?!"
+			LikeNPC: "{NPCName} is like kinda cute icl."
+			DislikeNPC: Sick of these {NPCName}s. Get rid of these {NPCName}s. LOL get it? I'm such a goof.
+			HateNPC: I hate how {NPCName} looks at me. Heh I'll have to let my demons out if he keeps playing. AHAHAH NO MORE MR NICE GUY.
+			LikeNPC_Princess: "{NPCName} is so pretty don't you think! um-"
+			Princess_LovesNPC: I really like {NPCName}'s music! But I do sometimes feel uncomfortable around him. He's um special..
 		}
 	}
 }
+
+Items: {
+	AigisStuffPainting: {
+		DisplayName: Aigis Persona Three Stuff painting
+		Tooltip: im stuff
+	}
+
+	balls: {
+		DisplayName: balls
+		Tooltip: ""
+	}
+
+	Isaac: {
+		DisplayName: Isaac
+		Tooltip: Is this a "The Binding of Isaac" reference??
+	}
+
+	MakotoStuffPainting: {
+		DisplayName: Makoto Persona Five Stuff painting
+		Tooltip: im stuff
+	}
+
+	RiseStuffPainting: {
+		DisplayName: Rise Persona Four Stuff painting
+		Tooltip: im stuff
+	}
+
+	GunBarrel: {
+		DisplayName: Gun Barrel
+		Tooltip: ""
+	}
+
+	Opium: {
+		DisplayName: Opium
+		Tooltip: ""
+	}
+
+	AryanPotion: {
+		DisplayName: Aryan Potion
+		Tooltip: ""
+	}
+
+	GermanFish: {
+		DisplayName: German Fish
+		Tooltip: You can be the perfect version of yourself
+	}
+
+	FishyIsaac: {
+		DisplayName: Fishy Isaac
+		Tooltip: ""
+	}
+
+	DirtPlatform: {
+		DisplayName: Dirt Platform
+		Tooltip: ""
+	}
+
+	StonePlatform: {
+		DisplayName: Stone Platform
+		Tooltip: ""
+	}
+}
+
+Projectiles: {
+	Kamehameha.DisplayName: Kamehameha
+	Magic.FishyBall.DisplayName: Fishy Ball
+}
+
+Configs: {
+	Config: {
+		DisplayName: Epic Client Config
+
+		_useLowRes: {
+			Label: Use the orignal low resolution textures
+			Tooltip: This will disable the high resolution textures present in this mod and opt for the lower res version
+		}
+
+		_nanakoEnabled: {
+			Label: Nanako greeting
+			Tooltip: Enablinb this will make Nanako from persona 4 greet you upon entering spawn
+		}
+	}
+}
+
+Prefixes.SigmaPrefix.DisplayName: Sigma
+InfoDisplays.SigmaCounterDisplay.DisplayName: Sigma Counter

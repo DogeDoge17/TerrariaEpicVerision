@@ -127,14 +127,15 @@ namespace TerrariaEpicVerision.NPCs.Critter
 
         public override void AI()
         {
-            if (Main.LocalPlayer.position.X > NPC.position.X)
-            {
-                NPC.spriteDirection = 0;
-            }
-            else
-            {
-                NPC.spriteDirection = 1;
-            }
+            //if (Main.LocalPlayer.position.X > NPC.position.X)
+            //{
+            //    NPC.spriteDirection = 0;
+            //}
+            //else
+            //{
+            //    NPC.spriteDirection = 1;
+            //}
+            NPC.spriteDirection = -NPC.direction;
 
             base.AI();
         }
