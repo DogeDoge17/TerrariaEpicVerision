@@ -18,8 +18,7 @@ namespace TerrariaEpicVerision.NPCs
         public virtual Asset<Texture2D> shimmerLargeImage { get; } = null;
         public virtual Asset<Texture2D> shimmerTransformLargeImage { get; } = null;
 
-        // public Rectangle source { get { return frames[activeFrame].Item2; } set { frames[activeFrame] = new Tuple<Rectangle, Rectangle>(frames[activeFrame].Item1, value); } }
-        public Rectangle source; //{ get { return frames[activeFrame].Item2; } set { frames[activeFrame] = new Tuple<Rectangle, Rectangle>(frames[activeFrame].Item1, value); } }
+        public Rectangle source;       
 
         public int activeFrame;
 
@@ -29,14 +28,8 @@ namespace TerrariaEpicVerision.NPCs
 
         public bool forceHighRes = false;
 
-        //public bool autoSource = true;
-
-       // List<Tuple<Rectangle, Rectangle>> frames = new() { new Tuple<Rectangle, Rectangle>(new Rectangle(), new Rectangle()) };
         public override void SetDefaults()
-        {
-            //if (source == null || autoSource == true)
-            //    source = new Rectangle(0, 0, largeImage.Width(), largeImage.Height());            
-
+        {                
             base.SetDefaults();
         }
 
@@ -54,7 +47,7 @@ namespace TerrariaEpicVerision.NPCs
 
                 if ((NPCID.Sets.ShimmerTownTransform[NPC.type] == true || NPCID.Sets.ShimmerTownTransform[Type] == true) && NPC.IsShimmerVariant)
                     text = shimmerLargeImage;
-                else if (NPC.shimmering)
+                else if ((NPCID.Sets.ShimmerTownTransform[NPC.type] == true || NPCID.Sets.ShimmerTownTransform[Type] == true) && NPC.shimmering)
                     text = shimmerTransformLargeImage;
                 else
                     text = largeImage;
@@ -65,138 +58,8 @@ namespace TerrariaEpicVerision.NPCs
             }
             else
             {
-                //NPC.frame = frames[activeFrame].Item1;  
                 return true;
             }
         }
-    }
-
-    public class HighResImage : ModSystem
-    {
-        private UserInterface MyInterface;
-
-        public static List<ImageUI> imageUIs = new List<ImageUI>();
-
-
-        public override void Load()
-        {
-            if (!Main.dedServ)
-            {
-                MyInterface = new UserInterface();
-
-                //MyUI = new ImageUI();
-                //MyUI.Activate(); // Activate calls Initialize() on the UIState if not initialized, then calls OnActivate and then calls Activate on every child element
-            }
-
-            base.Load();
-        }
-
-        public static void SetNew(ImageUI imgUI)
-        {
-            imgUI.Activate();
-            imageUIs.Add(imgUI);
-
-        }
-
-
-        public override void Unload()
-        {
-            //////////////////MyUI?.SomeKindOfUnload(); // If you hold data that needs to be unloaded, call it in OO-fashion
-            imageUIs = null;
-
-            base.Unload();
-        }
-
-
-        public override void UpdateUI(GameTime gameTime)
-        {
-
-            ShowMyUI();
-
-
-            if (MyInterface?.CurrentState != null)
-            {
-                MyInterface.Update(gameTime);
-            }
-        }
-
-        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-        {
-            int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
-            if (mouseTextIndex != -1)
-            {
-                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
-                    "MyMod: MyInterface",
-                    delegate
-                    {
-                        if (Time.gameTime != null && MyInterface?.CurrentState != null)
-                        {
-                            MyInterface.Draw(Main.spriteBatch, Time.gameTime);
-                        }
-                        return true;
-                    },
-                       InterfaceScaleType.UI));
-            }
-        }
-
-        public bool IsWithin(int value, int minimum, int maximum)
-        {
-            return value >= minimum && value <= maximum;
-        }
-
-        internal void ShowMyUI()
-        {
-            foreach (var img in imageUIs)
-                MyInterface?.SetState(img);
-        }
-
-        internal void HideMyUI()
-        {
-            MyInterface?.SetState(null);
-        }
-
-
-    }
-
-    public class ImageUI : UIState
-    {
-
-
-        public UIImageFramed image;
-
-        public UIPanel panel;
-
-        public static bool Visible = true;
-
-        Asset<Texture2D> texture;
-        Rectangle size;
-
-        public ImageUI(Asset<Texture2D> texture, Rectangle size)
-        {
-            this.texture = texture;
-            this.size = size;
-        }
-
-        public override void OnInitialize() // 1
-        {
-            UIPanel panel = new UIPanel(null, null, 0, 4);
-            panel.Width.Set(306, 0); // 3
-            panel.Height.Set(816, 0); // 3
-
-            UIImage image = new UIImage(texture, size);
-            image.Width = panel.Width;
-            image.Height = panel.Height;
-            image.SetImage(texture, size);
-            panel.Append(image);
-
-            Append(panel); // 4
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-
-            base.Update(gameTime);
-        }
-
     }
 }

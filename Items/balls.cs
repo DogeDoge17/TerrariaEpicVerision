@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace TerrariaEpicVerision.Items
 {
-	public class balls : ModItem
+	public class Balls : ModItem
 	{
 		public override void SetStaticDefaults()
 		{

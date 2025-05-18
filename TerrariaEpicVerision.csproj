@@ -15,14 +15,12 @@
     <None Remove="Items\FishyIsaac.png" />
     <None Remove="NPCs\Critter\RealChiyo.png" />
     <None Remove="NPCs\Enemy\NecoArc\hit.mp3" />
+    <None Remove="Projectiles\EpicHouseProj.png" />
     <None Remove="Projectiles\FishyBall.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="NPCs\Critter\RealChiyo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="NPCs\Enemy\NecoArc\hit.mp3" />
   </ItemGroup>
 </Project>

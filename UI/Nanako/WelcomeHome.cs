@@ -111,7 +111,7 @@ namespace TerrariaEpicVerision.UI.Nanako
             if (mouseTextIndex != -1)
             {
                 layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
-                    "MyMod: MyInterface",
+                    "TerrariaEpicVerision: Welcome Home",
                     delegate
                     {
                         if (_lastUpdateUiGameTime != null && MyInterface?.CurrentState != null)

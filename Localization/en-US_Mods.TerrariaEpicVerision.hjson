@@ -52,6 +52,8 @@ NPCs: {
 			Princess_LovesNPC: I really like {NPCName}'s music! But I do sometimes feel uncomfortable around him. He's um special..
 		}
 	}
+
+	GenieCat.DisplayName: Genie Cat
 }
 
 Items: {
@@ -114,11 +116,34 @@ Items: {
 		DisplayName: Stone Platform
 		Tooltip: ""
 	}
+
+	Potions: {
+		YestiGravityPotion: {
+			DisplayName: Yesti-Gravity Potion
+			Tooltip: Removes the low gravity effect while in space
+		}
+	}
+
+	EpicHouse: {
+		DisplayName: Epic InstaHouse
+		Tooltip:
+			'''
+			Places an NPC house instantly
+			This is my take on the InstaHouse. All love goes out to Fargo
+			'''
+	}
+
+	Balls: {
+		DisplayName: Balls
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
 	Kamehameha.DisplayName: Kamehameha
 	Magic.FishyBall.DisplayName: Fishy Ball
+	EpicHouseVisual.DisplayName: Epic House Visual
+	EpicHouseProj.DisplayName: Epic House Proj
 }
 
 Configs: {
@@ -137,5 +162,13 @@ Configs: {
 	}
 }
 
+RecipeGroup.Herb: Herb
 Prefixes.SigmaPrefix.DisplayName: Sigma
 InfoDisplays.SigmaCounterDisplay.DisplayName: Sigma Counter
+
+Buffs: {
+	YestiGravityBuff: {
+		DisplayName: Yesti Gravity Buff
+		Description: Mods.TerrariaEpicVerision.Buffs.YestiGravityBuff.Description
+	}
+}

@@ -10,21 +10,22 @@ using Terraria.ModLoader;
 using Terraria.GameContent;
 using Terraria.Social.WeGame;
 using Steamworks;
+using Terraria.DataStructures;
+using System;
 
-//no I didn't resuse code... thanks for asking
 namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 {
     public class PallasAthena : HighResNPC
     {
-        public Aigis aigis;
+        public NPC aigisNpc = null;
 
-        public static Aigis tempAigis;
+        //public static Aigis tempAigis;
+
+
 
         public override Asset<Texture2D> largeImage => ModContent.Request<Texture2D>("TerrariaEpicVerision/NPCs/Enemy/Persona/PallasAthena High Res");
 
-        public static byte orgiaStack;
-
-        private bool orgiaMode = false;
+        private bool OrgiaMode => aigisNpc != null && (aigisNpc.ai[1] == 1);
         
         public override void SetStaticDefaults()
         {
@@ -33,15 +34,9 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 
         public override void SetDefaults()
         {
-            if (orgiaStack == 2)
-            {
-                orgiaMode = true;
-            }
-            orgiaStack = 0;
+            
 
-            if (!orgiaMode)
-                NPC.damage = 50;
-            else NPC.damage = 0x96;
+            
             NPC.width = 152;
             NPC.height = 101;
             NPC.value = 0;
@@ -56,18 +51,18 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
 
             source = new Rectangle(0, 0, 750, 600);
 
-            try
-            {
-                if (tempAigis != null)
-                {
-                    aigis = tempAigis;
-                    tempAigis = null;
-                }
-            }
-            catch
-            {
-                aigis = null;
-            }
+            //try
+            //{
+            //    if (tempAigis != null)
+            //    {
+            //        aigis = tempAigis;
+            //        tempAigis = null;
+            //    }
+            //}
+            //catch
+            //{
+            //    aigis = null;
+            //}
 
         }
         public override void OnKill()
@@ -79,19 +74,15 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
             };
 
             if (!killedSelf)
-                if (aigis == null)
+                if (aigisNpc == null)
                     SoundEngine.PlaySound(new SoundStyle(paths[Main.rand.Next(0, paths.Count)]), NPC.position);
                 else
-                    SoundEngine.PlaySound(new SoundStyle(paths[Main.rand.Next(0, paths.Count)]), aigis.NPC.position);
+                    SoundEngine.PlaySound(new SoundStyle(paths[Main.rand.Next(0, paths.Count)]), aigisNpc.position);
 
 
-            for (int d = 0; d < 5; d++)
-            {
-
-                //static int 	NewGore (IEntitySource source, Vector2 Position, Vector2 Velocity, int Type, float Scale=1f) 	
-                //  Gore.NewGore(NPC.position, NPC.width, NPC.height, 10, 0f, 0f, 20, Color.Red, 1.5f);
-                Gore.NewGore(null, new Vector2(NPC.position.X + (NPC.width / 2), NPC.position.Y + (NPC.height / 2)), new Vector2(), GoreID.Smoke1, 1.5f);
-            }
+            for (int d = 0; d < 5; d++)                         
+               Gore.NewGore(null, new Vector2(NPC.position.X + (NPC.width / 2), NPC.position.Y + (NPC.height / 2)), new Vector2(), GoreID.Smoke1, 1.5f);
+            
 
             base.OnKill();
         }
@@ -104,13 +95,9 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
             NPC.life = 0;
 
 
-            for (int d = 0; d < 5; d++)
-            {
-
-                //static int 	NewGore (IEntitySource source, Vector2 Position, Vector2 Velocity, int Type, float Scale=1f) 	
-                //  Gore.NewGore(NPC.position, NPC.width, NPC.height, 10, 0f, 0f, 20, Color.Red, 1.5f);
+            for (int d = 0; d < 5; d++)                        
                 Gore.NewGore(null, new Vector2(NPC.position.X + (NPC.width / 2), NPC.position.Y + (NPC.height / 2)), new Vector2(), GoreID.Smoke1, 1.5f);
-            }
+            
 
             base.ModifyHitPlayer(target, ref modifiers);
         }
@@ -126,41 +113,48 @@ namespace TerrariaEpicVerision.NPCs.Enemy.Persona
             });
         }
 
+        public override void OnSpawn(IEntitySource source)
+        {
+            if (source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.type == ModContent.NPCType<Aigis>())
+            {
+                aigisNpc = npc;                
+            }
+
+            base.OnSpawn(source);
+            
+        }
+
         public override void AI()
         {
 
-            if (aigis != null)
+            if (!OrgiaMode)
+                NPC.damage = 50;
+            else NPC.damage = 0x96;
+
+            for (int i = 0; i < NPC.ai.Length; i++)
             {
-                if(aigis.NPC.life <= 0)
+                Console.Write(i + ": " + NPC.ai[i] + "\t");
+            }
+            Console.WriteLine();
+            if (aigisNpc != null)
+            {
+                if(aigisNpc.life <= 0)
                 {
                     for (int d = 0; d < 5; d++)
                     {
                         Gore.NewGore(null, new Vector2(NPC.position.X + (NPC.width / 2), NPC.position.Y + (NPC.height / 2)), new Vector2(), GoreID.Smoke1, 1.5f);
                     }
+                    
                     NPC.life = 0;         
                 }
             }
 
-            //if (Main.LocalPlayer.position.X > NPC.position.X)
-            //{
-            //    NPC.spriteDirection = 1;
-            //}
-            //else
-            //{
-            //    NPC.spriteDirection = 0;
-            //}
             NPC.spriteDirection = NPC.direction;
-
 
             base.AI();
         }
 
-
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            return 0f;
-        }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo) => 0f;
     }
 
 }

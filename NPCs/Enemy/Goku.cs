@@ -191,7 +191,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
         }
 
 
-        bool PercentBool(int chance) { if (MathF.Floor(Main.rand.Next(0, 100)) < chance) { return true; } else { return false; } }
+        bool PercentBool(int chance) { if (Main.rand.Next(0, 100) < chance) { return true; } else { return false; } }
 
 
         private bool playedSpawnNoise = false;
@@ -232,33 +232,13 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                 playedSpawnNoise = true;
             }
 
-
-            //if (Main.LocalPlayer.position.X > NPC.position.X)
-            //{
-            //    NPC.spriteDirection = 1;
-            //    direction = 1;
-            //}
-            //else
-            //{
-            //    NPC.spriteDirection = 0;
-            //    direction = -1;
-            //}
-
             NPC.spriteDirection = NPC.direction;
             direction = NPC.direction;
-
-
-            //Console.WriteLine("Orgia Mode: " + orgiaMode + " Overheating: " + overheating + " Orgia Activate Timer: " + MathF.Ceiling(orgiaActivateTimer) + " Orgia Timer: " + MathF.Ceiling(orgiaTimer) + " Said Orgia:" + saidOrgia + " Smoke Timer: " + smokeTimer);
 
             kamehamehaTimeout -= 1 * Time.deltaTime;
 
             if (kamehamehaTimeout <= 0)
-            {
-                //SoundEngine.PlaySound(SoundID.Coins, NPC.position);
-                //Projectile.NewProjectile(null, NPC.Center, new Vector2(10 * direction, 0), ModContent.ProjectileType<Kamehameha>(), 50, 2, 255, direction);
-
-                
-
+            {                
                 kamehamehaTimeout = 2;
 
                 NPC.knockBackResist = 0f;
@@ -267,7 +247,6 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             else if (the >= 0)
             {
                 the--;
-                Console.WriteLine(the);
             }
             else if (the <= 0)
             {
@@ -381,7 +360,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            if(Main.hardMode)
+            if (NPC.downedBoss3)
                 npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1, 1, 5));
         }
 

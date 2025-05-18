@@ -53,7 +53,20 @@ namespace TerrariaEpicVerision.Items
             AddIngredient(ItemID.Blinkroot).
             AddIngredient(ItemID.Sunflower,3).            
             AddTile(TileID.Bottles).
+            AddConsumeItemCallback(Recipe.ConsumptionRules.Alchemy).
             Register();
+
+
+            if (ModLoader.TryGetMod("CalamityMod", out Mod cal))
+            {
+                cal.TryFind("BloodOrb", out ModItem bloodOrb);
+                CreateRecipe().
+                    AddIngredient(ItemID.BottledWater).
+                    AddIngredient(bloodOrb).
+                    AddTile(TileID.AlchemyTable).
+                    Register().
+                    DisableDecraft();
+            }
         }
 
         public override bool? UseItem(Player player)

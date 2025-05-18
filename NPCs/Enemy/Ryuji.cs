@@ -199,7 +199,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            if (Main.hardMode)
+            if (NPC.downedBoss3)
                 npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1));
         }
 

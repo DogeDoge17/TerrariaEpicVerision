@@ -50,7 +50,7 @@ namespace TerrariaEpicVerision.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<MakotoStuffPainting>());
+            //Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<MakotoStuffPainting>());
         }
 
         //int c = 9;

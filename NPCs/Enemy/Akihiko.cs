@@ -272,7 +272,11 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                     source = new Rectangle(0, 1048, 465, 1048);
 
                     Caesar.tempAki = this;
-                    NPC.NewNPC(null, (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<Caesar>());
+                    int slot = NPC.NewNPC(null, (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<Caesar>());
+                    if (Main.netMode == NetmodeID.Server && slot < Main.maxNPCs)
+                    {
+                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, slot);
+                    }
                 }
             }
 
@@ -325,7 +329,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            if (Main.hardMode)
+            if (NPC.downedBoss3)
                 npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1));
         }
 

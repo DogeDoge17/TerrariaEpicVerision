@@ -24,15 +24,12 @@ using TerrariaEpicVerision.Items;
 using TerrariaEpicVerision.Items.Aigis;
 using TerrariaEpicVerision.NPCs.Enemy.Persona;
 
-//no I didn't resuse code... thanks for asking
 namespace TerrariaEpicVerision.NPCs.Enemy
 {
     public class Aigis : HighResNPC
     {
         private int orgiaModeChance = 50;
-        private bool orgiaMode = false;
         private float orgiaTimer;
-        private bool overheating = false;
         private float overheatingTimer;
         private float orgiaActivateTimer;
         private int originalDamage;
@@ -42,15 +39,16 @@ namespace TerrariaEpicVerision.NPCs.Enemy
         private int orgiaDefense;
         private int overheatDefense;
 
+        private bool OrgiaMode { get { return NPC.ai[1] == 1; } set { NPC.ai[1] = value ? 1 : 0; } }
+        private bool Overheating { get { return NPC.ai[1] == 2; } set { NPC.ai[1] = value ? 2 : 0 ; } }
+
         private int personaSummonChance = 100;
 
         public override Asset<Texture2D> largeImage => ModContent.Request<Texture2D>("TerrariaEpicVerision/NPCs/Enemy/Aigis High Res");
 
 
         public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Aigis Persona 3"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-
+        {            
             Main.npcFrameCount[Type] = 2;
         }
 
@@ -81,6 +79,8 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             overheatDefense = 2;
 
             source = new Rectangle(0, 0, 314, 804);
+
+                       
 
             //Banner = Item.NPCtoBanner(ModContent.NPCType<Ryuji>());
             //BannerItem = ModContent.ItemType<RyujiBanner>();
@@ -209,7 +209,6 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                 SoundEngine.PlaySound(new SoundStyle(pathsLow[Main.rand.Next(0, pathsLow.Count)]), NPC.position);
             else if (!onlyKill)
                 SoundEngine.PlaySound(new SoundStyle(paths[Main.rand.Next(0, paths.Count)]), NPC.position);
-
         }
 
 
@@ -230,10 +229,20 @@ namespace TerrariaEpicVerision.NPCs.Enemy
         public bool onlyKill = false;
         public Player hitTarg;
 
+        
+
         public override void AI()
         {
             noiseTimer -= 1 * Time.deltaTime;
             personaSummonTimer -= 1 * Time.deltaTime;
+
+            NPC.ai[3] = Main.rand.NextFloat();
+
+            for (int i = 0; i < NPC.ai.Length; i++)
+            {
+                Console.Write(i + ": " + NPC.ai[i] + "\t");
+            }
+            Console.WriteLine();
 
             if (checkLife)
             {
@@ -307,9 +316,13 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                             Dust.NewDust(NPC.position, 20, 20, ModContent.DustType<SummonPersona>(), -5, 0.1f, 1, Color.White, .3f);
 
                     }
-                    PallasAthena.tempAigis = this;
-                    PallasAthena.orgiaStack = (byte)(orgiaMode.ToInt() +1);
-                    NPC.NewNPC(null, (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<PallasAthena>());
+                    if (!Main.dedServ)
+                    {
+                        //PallasAthena.orgiaStack = (byte)(OrgiaMode.ToInt() +1);                       
+                        var entitySource = new EntitySource_Parent(Entity, "Spawning Aigis persona"); 
+                        int slot = NPC.NewNPC(entitySource, (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<PallasAthena>());                    
+                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, slot);
+                    }
                 }
             }
 
@@ -318,7 +331,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
             //Orgia Mode Stuff
             if (NPC.life < (float)NPC.lifeMax * .40f)
             {
-                if (!orgiaMode && !overheating)
+                if (!OrgiaMode && !Overheating)
                 {
                     orgiaActivateTimer -= 1 * Time.deltaTime;
 
@@ -326,7 +339,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                     {
                         if (PercentBool(orgiaModeChance))
                         {
-                            orgiaMode = true;
+                            OrgiaMode = true;
 
                             orgiaTimer = 10;
 
@@ -347,7 +360,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
                         }
                     }
                 }
-                else if (orgiaMode)
+                else if (OrgiaMode)
                 {
                     orgiaTimer -= 1 * Time.deltaTime;
 
@@ -364,12 +377,12 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
                     if (orgiaTimer <= 0)
                     {
-                        orgiaMode = false;
-                        overheating = true;
+                        OrgiaMode = false;
+                        Overheating = true;
                         overheatingTimer = 5;
                     }
                 }
-                else if (overheating)
+                else if (Overheating)
                 {
                     overheatingTimer -= 1 * Time.deltaTime;
                     smokeTimer -= 1 * Time.deltaTime;
@@ -384,8 +397,6 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
                         saidOverheat = true;
                     }
-
-                    //smokeTimer = (float)Main.rand.Next(1, 100) / 100;
 
                     NPC.frame = new Rectangle(0, 0, 43, 97);
                     source = new Rectangle(0, 0, 314, 804);
@@ -402,7 +413,7 @@ namespace TerrariaEpicVerision.NPCs.Enemy
 
                     if (overheatingTimer <= 0)
                     {
-                        overheating = false;
+                        Overheating = false;
                         saidOrgia = false;
                         saidOverheat = false;
                         orgiaActivateTimer = 5;

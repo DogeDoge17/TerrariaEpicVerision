@@ -1,4 +1,4 @@
 displayName = Terraria if it was epic
 author = Dog3y
 version = 0.15.0
-buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*, util\*,
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*, util\*,Sprite Photoshop Files\*

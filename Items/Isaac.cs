@@ -27,7 +27,7 @@ namespace TerrariaEpicVerision.Items
 		{
 			//Item.DefaultToRangedWeapon(ProjectileID.GelBalloon,)
 
-			Item.damage = 180;
+			Item.damage = 18;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 40;
 			Item.height = 40;
